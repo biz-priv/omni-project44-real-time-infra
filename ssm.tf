@@ -43,7 +43,7 @@ resource "aws_ssm_parameter" "omni_ltl_location_update_api_url" {
   type  = "String"
   value = var.omni_ltl_location_update_api_url
   tags = {
-    Name  = "/${var.application}/${var.env}/ltl-location-update-log-table-status-index"
+    Name  = "/${var.application}/${var.env}/ltl-location-update/api.url"
     Application = var.application
     CreatedBy   = var.created_by
     Environment = var.env
