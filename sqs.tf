@@ -1,6 +1,13 @@
 resource "aws_sqs_queue" "omni_project44_real_time_infra_ltl_location_update_queue" {
   name                       = "${var.application}-ltl-location-update-queue-${var.env}"
   visibility_timeout_seconds = 300
+  tags = {
+    Name        = "${var.application}-ltl-location-update-queue-${var.env}"
+    Application = var.application
+    CreatedBy   = var.created_by
+    Environment = var.env
+    STAGE       = var.env
+  }
 }
 
 data "aws_iam_policy_document" "omni_project44_real_time_infra_ltl_location_update_queue_policy" {
