@@ -37,3 +37,16 @@ resource "aws_ssm_parameter" "omni_ltl_location_update_log_table_status_index" {
     STAGE       = var.env
   }
 }
+
+resource "aws_ssm_parameter" "omni_ltl_location_update_api_url" {
+  name  = "/${var.application}/${var.env}/ltl-location-update/api.url"
+  type  = "String"
+  value = var.omni_ltl_location_update_api_url
+  tags = {
+    Name  = "/${var.application}/${var.env}/ltl-location-update/api.url"
+    Application = var.application
+    CreatedBy   = var.created_by
+    Environment = var.env
+    STAGE       = var.env
+  }
+}
