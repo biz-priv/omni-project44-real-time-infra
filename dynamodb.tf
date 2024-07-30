@@ -25,10 +25,11 @@ resource "aws_dynamodb_table" "omni_ltl_location_update_log_table" {
     name = "ReferenceNo"
     type = "S"
   }
-#   ttl {
-#     attribute_name = "Expiration"
-#     enabled        = true
-#   }
+  
+  ttl {
+    attribute_name = "Expiration"
+    enabled        = true
+  }
 
   global_secondary_index {
     name            = "Status-index"
