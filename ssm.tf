@@ -50,3 +50,31 @@ resource "aws_ssm_parameter" "omni_ltl_location_update_api_url" {
     STAGE       = var.env
   }
 }
+
+resource "aws_ssm_parameter" "omni-dw-p44-young-living-customer-numbers" {
+  name  = "/omni-p44-rt-updates/${var.env}/young-living-customer/numbers"
+  type  = "StringList"
+  value = var.omni_young_living_customer_number
+
+  tags = {
+    Application = "omni-project44-real-time-updates"
+    CreatedBy   = "BizCloudExperts"
+    Environment = var.env
+    STAGE       = var.env
+    Name        = "/omni-p44-rt-updates/${var.env}/young-living-customer/numbers"
+  }
+}
+
+resource "aws_ssm_parameter" "omni-dw-p44-young-living-customer-id" {
+  name  = "/omni-p44-rt-updates/${var.env}/young-living-customer/id"
+  type  = "String"
+  value = var.omni_young_living_customer_id
+
+  tags = {
+    Application = "omni-project44-real-time-updates"
+    CreatedBy   = "BizCloudExperts"
+    Environment = var.env
+    STAGE       = var.env
+    Name        = "/omni-p44-rt-updates/${var.env}/young-living-customer/id"
+  }
+}
