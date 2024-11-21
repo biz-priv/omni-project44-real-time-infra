@@ -78,3 +78,16 @@ resource "aws_ssm_parameter" "omni-dw-p44-young-living-customer-id" {
     Name        = "/omni-p44-rt-updates/${var.env}/young-living-customer/id"
   }
 }
+
+resource "aws_ssm_parameter" "omni-p44-young-living-location-update-arn" {
+  name  = "/omni/${var.env}/p44-young-living/location-updates/sqs.arn"
+  type  = "String"
+  value = aws_sqs_queue.omni_p44_young_living_location_update_sqs.arn
+
+  tags = {
+    Name  = "/omni/${var.env}/p44-young-living/location-updates/sqs.arn"
+    Application = var.application
+    CreatedBy   = var.created_by
+    Environment = var.env
+  }
+}
