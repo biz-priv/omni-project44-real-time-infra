@@ -56,7 +56,7 @@ resource "aws_sqs_queue" "omni_p44_young_living_location_update_sqs" {
   }
 }
 
-data "aws_iam_policy_document" "omni_p44_young_living_location_update_queue_policy" {
+data "aws_iam_policy_document" "omni_p44_young_living_location_updates_queue_policy" {
   policy_id = "${aws_sqs_queue.omni_p44_young_living_location_update_sqs.arn}/SQSDefaultPolicy"
   statement {
     sid    = "Allow SNS publish to SQS"
