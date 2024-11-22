@@ -56,7 +56,7 @@ resource "aws_sqs_queue" "omni_p44_young_living_location_update_sqs" {
   }
 }
 
-data "aws_iam_policy_document" "omni_p44_young_living_location_updates_queue_policy" {
+data "aws_iam_policy_document" "omni_p44_young_living_location_update_queue_policy" {
   policy_id = "${aws_sqs_queue.omni_p44_young_living_location_update_sqs.arn}/SQSDefaultPolicy"
   statement {
     sid    = "Allow SNS publish to SQS"
@@ -79,6 +79,11 @@ data "aws_iam_policy_document" "omni_p44_young_living_location_updates_queue_pol
       ]
     }
   }
+}
+
+resource "aws_sqs_queue_policy" "omni_p44_young_living_location_update_queue_policy" {
+  queue_url = aws_sqs_queue.omni_p44_young_living_location_update_sqs.id
+  policy    = data.aws_iam_policy_document.omni_p44_young_living_location_update_queue_policy.json
 }
 
 resource "aws_sns_topic_subscription" "omni_p44_young_living_shipment_location_updates_sns_subscription" {
