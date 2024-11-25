@@ -91,3 +91,16 @@ resource "aws_ssm_parameter" "omni-p44-young-living-location-update-arn" {
     Environment = var.env
   }
 }
+
+resource "aws_ssm_parameter" "omni-p44-young-living-location-update-notification-email-list" {
+  name  = "/omni/${var.env}/p44-young-living/location-updates/notification-email-list"
+  type  = "String"
+  value = var.omni_p44_young_living_location_update_notification_email_list
+
+  tags = {
+    Name  = "/omni/${var.env}/p44-young-living/location-updates/notification-email-list"
+    Application = var.application
+    CreatedBy   = var.created_by
+    Environment = var.env
+  }
+}
