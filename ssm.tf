@@ -50,3 +50,57 @@ resource "aws_ssm_parameter" "omni_ltl_location_update_api_url" {
     STAGE       = var.env
   }
 }
+
+resource "aws_ssm_parameter" "omni-dw-p44-young-living-customer-numbers" {
+  name  = "/omni-p44-rt-updates/${var.env}/young-living-customer/numbers"
+  type  = "StringList"
+  value = var.omni_young_living_customer_number
+
+  tags = {
+    Application = "omni-project44-real-time-updates"
+    CreatedBy   = "BizCloudExperts"
+    Environment = var.env
+    STAGE       = var.env
+    Name        = "/omni-p44-rt-updates/${var.env}/young-living-customer/numbers"
+  }
+}
+
+resource "aws_ssm_parameter" "omni-dw-p44-young-living-customer-id" {
+  name  = "/omni-p44-rt-updates/${var.env}/young-living-customer/id"
+  type  = "String"
+  value = var.omni_young_living_customer_id
+
+  tags = {
+    Application = "omni-project44-real-time-updates"
+    CreatedBy   = "BizCloudExperts"
+    Environment = var.env
+    STAGE       = var.env
+    Name        = "/omni-p44-rt-updates/${var.env}/young-living-customer/id"
+  }
+}
+
+resource "aws_ssm_parameter" "omni-p44-young-living-location-update-arn" {
+  name  = "/omni/${var.env}/p44-young-living/location-updates/sqs.arn"
+  type  = "String"
+  value = aws_sqs_queue.omni_p44_young_living_location_update_sqs.arn
+
+  tags = {
+    Name  = "/omni/${var.env}/p44-young-living/location-updates/sqs.arn"
+    Application = var.application
+    CreatedBy   = var.created_by
+    Environment = var.env
+  }
+}
+
+resource "aws_ssm_parameter" "omni-p44-young-living-location-update-notification-email-list" {
+  name  = "/omni/${var.env}/p44-young-living/location-updates/notification-email-list"
+  type  = "String"
+  value = var.omni_p44_young_living_location_update_notification_email_list
+
+  tags = {
+    Name  = "/omni/${var.env}/p44-young-living/location-updates/notification-email-list"
+    Application = var.application
+    CreatedBy   = var.created_by
+    Environment = var.env
+  }
+}
